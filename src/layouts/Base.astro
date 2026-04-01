@@ -74,7 +74,7 @@ const isLoggedIn = !!Astro.locals.user;
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap"
 			rel="stylesheet"
 		/>
 		<title>{fullTitle}</title>
@@ -360,17 +360,17 @@ const isLoggedIn = !!Astro.locals.user;
 			}
 
 			:root {
-				/* Colors - Light mode (default) */
-				--color-bg: #ffffff;
-				--color-bg-subtle: #fafafa;
-				--color-text: #1a1a1a;
-				--color-text-secondary: #525252;
-				--color-muted: #8b8b8b;
-				--color-border: #e5e5e5;
-				--color-border-subtle: #f0f0f0;
-				--color-surface: #f7f7f7;
-				--color-accent: #0066cc;
-				--color-accent-hover: #0052a3;
+				/* Colors - Light mode (warm cream + indigo) */
+				--color-bg: #f9f7f3;
+				--color-bg-subtle: #f1efe9;
+				--color-text: #1c1917;
+				--color-text-secondary: #57534e;
+				--color-muted: #a8a29e;
+				--color-border: #e3e0d8;
+				--color-border-subtle: #ede9e2;
+				--color-surface: #eae7de;
+				--color-accent: #6366f1;
+				--color-accent-hover: #4f46e5;
 				--color-on-accent: white;
 				--color-accent-ring: color-mix(
 					in srgb,
@@ -390,6 +390,8 @@ const isLoggedIn = !!Astro.locals.user;
 				--font-sans:
 					"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 					sans-serif;
+				--font-display:
+					"Instrument Serif", Georgia, "Times New Roman", serif;
 				--font-mono:
 					"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -438,8 +440,8 @@ const isLoggedIn = !!Astro.locals.user;
 				--wide-width: 1200px;
 				--max-width: var(--content-width);
 				--gutter-width: 200px;
-				--radius: 4px;
-				--radius-lg: 8px;
+				--radius: 6px;
+				--radius-lg: 12px;
 
 				/* Transitions */
 				--transition-fast: 120ms ease;
@@ -477,31 +479,31 @@ const isLoggedIn = !!Astro.locals.user;
 			/* Dark mode via system preference (when no explicit class) */
 			@media (prefers-color-scheme: dark) {
 				:root:not(.light) {
-					--color-bg: #0d0d0d;
-					--color-bg-subtle: #141414;
-					--color-text: #ededed;
-					--color-text-secondary: #a0a0a0;
-					--color-muted: #6b6b6b;
-					--color-border: #2a2a2a;
-					--color-border-subtle: #1f1f1f;
-					--color-surface: #181818;
-					--color-accent: #4d9fff;
-					--color-accent-hover: #6eb0ff;
+					--color-bg: #0c0c10;
+					--color-bg-subtle: #131318;
+					--color-text: #f0eff4;
+					--color-text-secondary: #a8a29e;
+					--color-muted: #6b6770;
+					--color-border: #27252f;
+					--color-border-subtle: #1d1c24;
+					--color-surface: #19181f;
+					--color-accent: #818cf8;
+					--color-accent-hover: #a5b4fc;
 				}
 			}
 
 			/* Explicit dark mode */
 			:root.dark {
-				--color-bg: #0d0d0d;
-				--color-bg-subtle: #141414;
-				--color-text: #ededed;
-				--color-text-secondary: #a0a0a0;
-				--color-muted: #6b6b6b;
-				--color-border: #2a2a2a;
-				--color-border-subtle: #1f1f1f;
-				--color-surface: #181818;
-				--color-accent: #4d9fff;
-				--color-accent-hover: #6eb0ff;
+				--color-bg: #0c0c10;
+				--color-bg-subtle: #131318;
+				--color-text: #f0eff4;
+				--color-text-secondary: #a8a29e;
+				--color-muted: #6b6770;
+				--color-border: #27252f;
+				--color-border-subtle: #1d1c24;
+				--color-surface: #19181f;
+				--color-accent: #818cf8;
+				--color-accent-hover: #a5b4fc;
 			}
 
 			html {
@@ -563,9 +565,9 @@ const isLoggedIn = !!Astro.locals.user;
 				position: sticky;
 				top: 0;
 				z-index: 100;
-				background: color-mix(in srgb, var(--color-bg) 65%, transparent);
-				backdrop-filter: blur(12px);
-				-webkit-backdrop-filter: blur(12px);
+				background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+				backdrop-filter: blur(16px) saturate(1.2);
+				-webkit-backdrop-filter: blur(16px) saturate(1.2);
 				border-bottom: 1px solid var(--color-border-subtle);
 			}
 
@@ -580,11 +582,13 @@ const isLoggedIn = !!Astro.locals.user;
 			}
 
 			.site-title {
-				font-size: var(--font-size-lg);
-				font-weight: 600;
+				font-family: var(--font-display);
+				font-size: 1.3rem;
+				font-weight: 400;
+				font-style: italic;
 				color: var(--color-text);
 				text-decoration: none;
-				letter-spacing: var(--tracking-snug);
+				letter-spacing: -0.01em;
 			}
 
 			.site-title:hover {
@@ -756,11 +760,12 @@ const isLoggedIn = !!Astro.locals.user;
 			}
 
 			.footer-logo {
-				font-size: var(--font-size-lg);
-				font-weight: 600;
+				font-family: var(--font-display);
+				font-size: 1.3rem;
+				font-weight: 400;
+				font-style: italic;
 				color: var(--color-text);
 				text-decoration: none;
-				letter-spacing: var(--tracking-snug);
 			}
 
 			.footer-tagline {
